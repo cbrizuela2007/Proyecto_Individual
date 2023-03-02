@@ -1,30 +1,56 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Producto from './components/Producto';
-import DetalleProducto from './components/DetalleProducto';
-import EditarProducto from './components/EditarProducto';
-import Registro from './components/Registro';
-import Login from './components/Login';
+import React from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-function App() {
 
+/** import all components */
+import Username from './components/Username';
+import Password from './components/Password';
+import Register from './components/Register';
+import Profile from './components/Profile';
+import Recovery from './components/Recovery';
+import Reset from './components/Reset';
+import PageNotFound from './components/PageNotFound';
+
+
+/** auth middleware */
+import { AuthorizeUser, ProtectRoute } from './middleware/auth'
+
+/** root routes */
+const router = createBrowserRouter([
+    {
+        path : '/',
+        element : <Username></Username>
+    },
+    {
+        path : '/register',
+        element : <Register></Register>
+    },
+    {
+        path : '/password',
+        element : <ProtectRoute><Password /></ProtectRoute>
+    },
+    {
+        path : '/profile',
+        element : <AuthorizeUser><Profile /></AuthorizeUser>
+    },
+    {
+        path : '/recovery',
+        element : <Recovery></Recovery>
+    },
+    {
+        path : '/reset',
+        element : <Reset></Reset>
+    },
+    {
+        path : '*',
+        element : <PageNotFound></PageNotFound>
+    },
+])
+
+export default function App() {
   return (
-    <div className="App">
-
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Producto />}></Route>
-          <Route path="/producto/new" element={<Producto />}></Route>
-          <Route path="/producto/detalle/:id" element={<DetalleProducto/>}></Route>
-          <Route path="/producto/editar/:id" element={<EditarProducto/>}></Route>
-          <Route path="/registro" element={<Registro/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
-        </Routes>
-      </BrowserRouter>
-
-
-    </div>
-  );
+    <main>
+        <RouterProvider router={router}></RouterProvider>
+    </main>
+  )
 }
-
-export default App;
