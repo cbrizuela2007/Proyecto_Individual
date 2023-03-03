@@ -1,6 +1,6 @@
 export default {
     JWT_SECRET : "<secret>",
-    EMAIL: "gunnar.kutch@ethereal.email", // testing email & password
-    PASSWORD : "88NkGmpvrTgfzZHeGU",
+    EMAIL: "brennan.metz@ethereal.email", // testing email & password
+    PASSWORD : "mX8Fkg4f3tzZQnPJhG",
     ATLAS_URI: "mongodb://127.0.0.1:27017/Login"
 }

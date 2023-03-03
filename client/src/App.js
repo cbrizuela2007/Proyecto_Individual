@@ -12,45 +12,49 @@ import Reset from './components/Reset';
 import PageNotFound from './components/PageNotFound';
 
 
+
 /** auth middleware */
 import { AuthorizeUser, ProtectRoute } from './middleware/auth'
+import Container from './components/Container';
+import Fondo from './components/Fondo';
 
 /** root routes */
 const router = createBrowserRouter([
     {
         path : '/',
-        element : <Username></Username>
+        element : <Fondo><Username></Username></Fondo>
     },
     {
         path : '/register',
-        element : <Register></Register>
+        element : <Fondo><Register></Register></Fondo>
     },
     {
         path : '/password',
-        element : <ProtectRoute><Password /></ProtectRoute>
+        element : <Fondo><ProtectRoute><Password /></ProtectRoute></Fondo>
     },
     {
         path : '/profile',
-        element : <AuthorizeUser><Profile /></AuthorizeUser>
+        element : <Container><AuthorizeUser><Profile /></AuthorizeUser></Container>
     },
     {
         path : '/recovery',
-        element : <Recovery></Recovery>
+        element : <Fondo><Recovery></Recovery></Fondo>
     },
     {
         path : '/reset',
-        element : <Reset></Reset>
+        element : <Fondo><Reset></Reset></Fondo>
     },
     {
         path : '*',
         element : <PageNotFound></PageNotFound>
     },
+  
 ])
 
 export default function App() {
   return (
-    <main>
+
         <RouterProvider router={router}></RouterProvider>
-    </main>
+
   )
 }

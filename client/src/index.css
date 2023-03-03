@@ -9,8 +9,24 @@
 }
 
 body{
-    background: #dcdce6;
+    /* background: #dcdce6;
     background-image: url('./assets/fondo4.jpg');
     background-size: cover;
+    background-repeat: no-repeat; */
+}
+
+.header{
+    background-color: red;
+}
+
+.fondo{
+    background: #dcdce6;
+    background-image: url('./assets/fondo4.jpg'); 
+    background-size: cover;
     background-repeat: no-repeat;
+}
+
+.fondo2{
+    background: #dcdce6;
+    background-image: url('./assets/Background.png');
 }

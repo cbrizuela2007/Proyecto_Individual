@@ -17,8 +17,8 @@ export default function Reset() {
 
   const formik = useFormik({
     initialValues : {
-      password : 'admin@123',
-      confirm_pwd: 'admin@123'
+      password : '',
+      confirm_pwd: ''
     },
     validate : resetPasswordValidation,
     validateOnBlur: false,
@@ -40,7 +40,7 @@ export default function Reset() {
 
 
   if(isLoading) return <h1 className='text-2xl font-bold'>isLoading</h1>;
-  if(serverError) return <h1 className='text-xl text-red-500'>{serverError.message}</h1>
+  if(serverError) return <h1 className='text-xl text-red-500' style={{height:"100vh"}}>{serverError.message}</h1>
   if(status && status !== 201) return <Navigate to={'/password'} replace={true}></Navigate>
 
   return (
